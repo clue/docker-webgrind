@@ -15,7 +15,7 @@ Further runs will be immediate, as the image will be cached locally.
 The recommended way to run this container looks like this:
 
 ```bash
-$ sudo docker run -d -p 80:80 clue/webgrind
+$ docker run -d -p 80:80 clue/webgrind
 ```
 
 This will start the webgrind container in a detached session in the background and will expose
