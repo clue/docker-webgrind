@@ -1,9 +1,9 @@
-FROM ubuntu
+FROM ubuntu:14.04
 MAINTAINER Christian Lück <christian@lueck.tv>
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
   nginx supervisor php5-fpm php5-cli \
-  graphviz python \
+  graphviz python3 python-pip python-dev build-essential graphviz \
   git
 
 # add webgrind as the only nginx site
@@ -15,6 +15,7 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN git clone https://github.com/jokkedk/webgrind /var/www
 RUN chown www-data:www-data -R /var/www
 
+RUN pip install gprof2dot
 # expose only nginx HTTP port
 EXPOSE 80
 
